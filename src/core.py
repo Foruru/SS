@@ -4,28 +4,28 @@ from typing import Self
 
 class DatabaseCore():
 	"""
-    A class providing a basic interface to a SQLite database.
+	A class providing a basic interface to a SQLite database.
 
-    This class offers a simplified way to interact with SQLite databases,
-    handling connection, cursor, and transaction management.
-    """
+	This class offers a simplified way to interact with SQLite databases,
+	handling connection, cursor, and transaction management.
+	"""
 
 	def __init__(self, file: str) -> None:
 		"""
-        Initializes a new DatabaseCore instance.
+		Initializes a new DatabaseCore instance.
 
-        Args:
-            file (str): The path to the SQLite database file.
-        """
+		Args:
+			file (str): The path to the SQLite database file.
+		"""
 		self.file = file
 
 	def __enter__(self) -> Self:
 		"""
-        Enables use of the 'with' statement for context management.
+		Enables use of the 'with' statement for context management.
 
-        Returns:
-            Self: The current DatabaseCore instance.
-        """
+		Returns:
+			Self: The current DatabaseCore instance.
+		"""
 		try:
 			self.conn = sqlite3.connect(self.file)
 			self.cur = self.conn.cursor()
@@ -36,10 +36,10 @@ class DatabaseCore():
 
 	def __exit__(self, exc_type, exc_val, exc_tb) -> None:
 		"""
-        Handles cleanup when exiting the 'with' block.
+		Handles cleanup when exiting the 'with' block.
 
-        Commits any pending transactions and closes the database connection.
-        """
+		Commits any pending transactions and closes the database connection.
+		"""
 		self.commit()
 		self.close()
 
@@ -48,12 +48,12 @@ class DatabaseCore():
 		Executes a SELECT query.
 
 		Args:
-            statement (str): The SQL SELECT statement.
-            parameters (tuple, optional): Parameters for the query. Defaults to "".
+			statement (str): The SQL SELECT statement.
+			parameters (tuple, optional): Parameters for the query. Defaults to "".
 
-        Returns:
-            any: The result of the query.
-        """
+		Returns:
+			any: The result of the query.
+		"""
 		try:
 			return self.cur.execute(statement, parameters)
 		except sqlite3.Error as e:
@@ -61,12 +61,12 @@ class DatabaseCore():
 
 	def execute(self, statement: str, parameters="") -> None:
 		"""
-        Executes an arbitrary SQL statement.
+		Executes an arbitrary SQL statement.
 
-        Args:
-            statement (str): The SQL statement to execute.
+		Args:
+			statement (str): The SQL statement to execute.
 			parameters (tuple, optional): Parameters for the execute. Defaults to "".
-        """
+		"""
 		try:
 			self.cur.execute(statement, parameters)
 		except sqlite3.Error as e:
