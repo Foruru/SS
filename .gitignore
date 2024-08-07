@@ -1,0 +1,10 @@
+# Python
+__pycache__
+
+# enviroment
+venv
+.env
+
+# Misc
+*.db
+tests
