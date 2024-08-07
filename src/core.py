@@ -26,11 +26,8 @@ class DatabaseCore():
 		Returns:
 			Self: The current DatabaseCore instance.
 		"""
-		try:
-			self.conn = sqlite3.connect(self.file)
-			self.cur = self.conn.cursor()
-		except sqlite3.OperationalError as e:
-			print(f"Error opening database: {e}")
+		self.conn = sqlite3.connect(self.file)
+		self.cur = self.conn.cursor()
 
 		return self
 
