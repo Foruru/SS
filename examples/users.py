@@ -11,7 +11,7 @@ class Users(DatabaseCore):
 		"""
 		Creates a new user in the database.
 
-		Args:
+		Parameters:
 			first_name (str): The user's first name.
 			last_name (str): The user's last name.
 			username (str): The user's username.
@@ -26,7 +26,7 @@ class Users(DatabaseCore):
 		"""
 		Removes a user from the database.
 
-		Args:
+		Parameters:
 			chat_id (int): The chat ID of the user to remove.
 		"""
 		self.query('DELETE FROM users WHERE chat_id=?', [chat_id]);
@@ -35,7 +35,7 @@ class Users(DatabaseCore):
 		"""
 		Retrieves the first name of a user.
 
-		Args:
+		Parameters:
 			chat_id (int): The chat ID of the user.
 
 		Returns:
@@ -47,7 +47,7 @@ class Users(DatabaseCore):
 		"""
 		Retrieves the balance of a user.
 
-		Args:
+		Parameters:
 			chat_id (int): The chat ID of the user.
 
 		Returns:
@@ -55,11 +55,11 @@ class Users(DatabaseCore):
 		"""
 		return self.query('SELECT balance FROM users WHERE chat_id=?', [chat_id]).fetchone()[0]
 
-	def replenishment(self, chat_id, amount) -> None:
+	def replenishment(self, chat_id: int, amount: int) -> None:
 		"""
 		Updates the balance of a user.
 
-		Args:
+		Parameters:
 			chat_id (int): The chat ID of the user.
 			amount (int): The amount to add to the balance.
 		"""

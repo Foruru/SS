@@ -14,7 +14,7 @@ class DatabaseCore():
 		"""
 		Initializes a new DatabaseCore instance.
 
-		Args:
+		Parameters:
 			file (str): The path to the SQLite database file.
 		"""
 		self.file = file
@@ -44,9 +44,9 @@ class DatabaseCore():
 		"""
 		Executes a SELECT query.
 
-		Args:
+		Parameters:
 			statement (str): The SQL SELECT statement.
-			parameters (tuple, optional): Parameters for the query. Defaults to "".
+			parameters (str, optional): Parameters for the query. Defaults to "".
 
 		Returns:
 			any: The result of the query.
@@ -60,9 +60,9 @@ class DatabaseCore():
 		"""
 		Executes an arbitrary SQL statement.
 
-		Args:
+		Parameters:
 			statement (str): The SQL statement to execute.
-			parameters (tuple, optional): Parameters for the execute. Defaults to "".
+			parameters (str, optional): Parameters for the execute. Defaults to "".
 		"""
 		try:
 			self.cur.execute(statement, parameters)
