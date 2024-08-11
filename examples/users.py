@@ -64,3 +64,15 @@ class Users(DatabaseCore):
 			amount (int): The amount to add to the balance.
 		"""
 		self.execute('UPDATE users SET balance=? WHERE chat_id=?', [amount, chat_id])
+
+	def check(self, chat_id: int) -> bool:
+		"""
+		Check user presence.
+
+		Parameters:
+			chat_id (int): The chat ID of the user.
+
+		Returns:
+			bool: User presence.
+		"""
+		return self.query("SELECT chat_id FROM users WHERE chat_id=?", [chat_id]).fetchone() is not None

@@ -26,10 +26,11 @@ def main():
 		db.create_tables(SHEMAS)
 
 		user = ["qwer", "ty", "qwert", 1234567890]
-		db.new_user(*user)
+		if not db.check(user[3]):
+			db.new_user(*user)
 
-		db.replenishment(1234567890, 1488)
-		print(db.get_balance(1234567890))
+		db.replenishment(user[3], 1488)
+		assert db.get_balance(user[3]) == 1488
 
 if __name__ == '__main__':
 	main()
