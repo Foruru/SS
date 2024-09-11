@@ -1,4 +1,4 @@
-from src.core import DatabaseCore
+from src import DatabaseCore
 
 class Users(DatabaseCore):
 	"""
